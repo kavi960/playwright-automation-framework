@@ -4,6 +4,9 @@ const { expect } = require('@playwright/test')
 const productData =
     require('../../test-data/products.json');
 
+const paymentData =
+    require('../../test-data/payment.json');
+
 
 test(
     'Valid user login and add multiple products',
@@ -48,9 +51,7 @@ test(
         // 3. NAVIGATE TO PRODUCTS
         // =======================================
 
-        await homePage.openProducts();
-
-        await productsPage.waitForPageLoad();
+        await productsPage.navigateToProducts();
 
 
         // =======================================
@@ -231,4 +232,4 @@ test(
 
         await checkoutPage.placeOrder();
     }
-);
+);  
