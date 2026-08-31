@@ -1,0 +1,19 @@
+{
+    "products": [
+        {
+            "name": "Blue Top",
+            "quantity": 3,
+            "price": 500
+        },
+        {
+            "name": "Men Tshirt",
+            "quantity": 2,
+            "price": 400
+        },
+        {
+            "name": "Sleeveless Dress",
+            "quantity": 1,
+            "price": 1000
+        }
+    ]
+}
