@@ -4,6 +4,7 @@ pipeline {
 
     environment {
         BASE_URL = 'https://automationexercise.com'
+        PATH = "/opt/homebrew/bin:${env.PATH}"
     }
 
     stages {
@@ -11,6 +12,15 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+
+        stage('Verify Node Environment') {
+            steps {
+                sh 'which node'
+                sh 'node --version'
+                sh 'which npm'
+                sh 'npm --version'
             }
         }
 
@@ -50,9 +60,7 @@ pipeline {
                     )
 
                 ]) {
-
                     sh 'npx playwright test'
-
                 }
             }
         }
@@ -61,7 +69,6 @@ pipeline {
     post {
 
         always {
-
             archiveArtifacts(
                 artifacts: 'playwright-report/**',
                 allowEmptyArchive: true
