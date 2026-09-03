@@ -46,7 +46,7 @@ module.exports = defineConfig({
         },
 
         // Collect trace when test retries
-        trace: 'on',
+        trace: 'only-on-failure',
 
         // Screenshot when test fails
         screenshot: 'only-on-failure',
