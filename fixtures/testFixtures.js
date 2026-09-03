@@ -11,28 +11,6 @@ const { PaymentPage } = require('../pages/PaymentPage');
 
 exports.test = base.test.extend({
 
-    credentials: async ({}, use, testInfo) => {
-
-        const credentials = {
-            chromium: {
-                username: process.env.CHROME_USERNAME,
-                password: process.env.CHROME_PASSWORD
-            },
-
-            firefox: {
-                username: process.env.FIREFOX_USERNAME,
-                password: process.env.FIREFOX_PASSWORD
-            },
-
-            webkit: {
-                username: process.env.WEBKIT_USERNAME,
-                password: process.env.WEBKIT_PASSWORD
-            }
-        };
-
-        await use(credentials[testInfo.project.name]);
-    },
-
     loginPage: async ({ page }, use) => {
         await use(new LoginPage(page));
     },
@@ -56,7 +34,6 @@ exports.test = base.test.extend({
     checkoutPage: async ({ page }, use) => {
         await use(new CheckoutPage(page));
     },
-
     paymentPage: async ({ page }, use) => {
         await use(new PaymentPage(page));
     }
