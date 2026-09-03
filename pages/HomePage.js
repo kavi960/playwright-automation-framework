@@ -21,9 +21,6 @@ class HomePage extends BasePage {
     async logout() {
         await this.logoutLink.click();
     }
-    async openProducts() {
-    await this.productsLink.click();
-}
 }
 
 module.exports = { HomePage };

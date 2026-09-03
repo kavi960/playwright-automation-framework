@@ -6,12 +6,13 @@ class ProductsPage extends BasePage {
         super(page);
 
         this.searchInput = page.locator('#search_product');
-
         this.searchButton = page.locator('#submit_search');
     }
 
     async waitForPageLoad() {
-        await this.searchInput.waitFor({ state: 'visible' });
+        await this.searchInput.waitFor({
+            state: 'visible'
+        });
     }
 
     async searchProduct(productName) {
@@ -22,14 +23,19 @@ class ProductsPage extends BasePage {
     getProductContainer(productName) {
         return this.page
             .locator('.col-sm-4')
-            .filter({ hasText: productName });
+            .filter({
+                hasText: productName
+            });
     }
 
     async openProduct(productName) {
-        const productContainer = this.getProductContainer(productName);
+        const productContainer =
+            this.getProductContainer(productName);
 
         await productContainer
-            .getByRole('link', { name: 'View Product' })
+            .getByRole('link', {
+                name: 'View Product'
+            })
             .click();
     }
 

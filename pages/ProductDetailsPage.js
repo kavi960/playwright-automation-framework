@@ -1,9 +1,11 @@
-class ProductDetailsPage {
+const { BasePage } = require('./BasePage');
+
+class ProductDetailsPage extends BasePage {
+
     constructor(page) {
-        this.page = page;
+        super(page);
 
         this.productInformation = page.locator('.product-information');
-        this.productName = this.productInformation.locator('h2');
 
         this.quantityInput = page.locator('#quantity');
 
@@ -21,6 +23,10 @@ class ProductDetailsPage {
 
     async waitForPageLoad() {
         await this.productInformation.waitFor({
+            state: 'visible'
+        });
+
+        await this.quantityInput.waitFor({
             state: 'visible'
         });
     }
@@ -50,4 +56,4 @@ class ProductDetailsPage {
     }
 }
 
-module.exports = {ProductDetailsPage};
+module.exports = { ProductDetailsPage };
