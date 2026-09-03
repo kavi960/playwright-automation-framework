@@ -15,7 +15,16 @@ class HomePage extends BasePage {
     }
 
     async openProducts() {
-        await this.productsLink.click();
+
+        await this.productsLink.waitFor({
+            state: 'visible'
+        });
+
+        await this.page.goto('/products', {
+            waitUntil: 'domcontentloaded'
+        });
+
+        await this.page.waitForURL('**/products');
     }
 
     async logout() {
