@@ -235,7 +235,7 @@ test(
         await checkoutPage.placeOrder();
 
         // =======================================
-        // 7. PAYMENT
+        // 7.  PAYMENT
         // =======================================
 
         await paymentPage.enterPaymentDetails(
