@@ -12,12 +12,14 @@ test(
     'Valid user login and add multiple products',
     async ({
         page,
+        credentials,
         loginPage,
         homePage,
         productsPage,
         productDetailsPage,
         cartPage,
-        checkoutPage
+        checkoutPage,
+        paymentPage
     }) => {
 
 
@@ -28,8 +30,8 @@ test(
         await page.goto('/login');
 
         await loginPage.login(
-            process.env.TEST_USERNAME,
-            process.env.TEST_PASSWORD
+            credentials.username,
+            credentials.password
         );
 
         // Verify successful login
@@ -231,5 +233,21 @@ test(
         await checkoutPage.verifyBillingAddress();
 
         await checkoutPage.placeOrder();
+
+        // =======================================
+        // 7.  PAYMENT
+        // =======================================
+
+        await paymentPage.enterPaymentDetails(
+            paymentData.cardName,
+            paymentData.cardNumber,
+            paymentData.cvc,
+            paymentData.expiryMonth,
+            paymentData.expiryYear
+        );
+
+        await paymentPage.payAndConfirmOrder();
+
+        await paymentPage.verifyOrderPlaced();
     }
 );  
