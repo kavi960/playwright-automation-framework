@@ -29,7 +29,7 @@ module.exports = defineConfig({
 
     // Reporter
     reporter: [
-        ['html', { open: 'never' }],
+        ['html', { open: 'on-failure' }],
         ['list']
     ],
 
@@ -46,7 +46,7 @@ module.exports = defineConfig({
         },
 
         // Collect trace when test retries
-        trace: 'on-first-retry',
+        trace: 'on',
 
         // Screenshot when test fails
         screenshot: 'only-on-failure',
